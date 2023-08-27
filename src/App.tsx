@@ -1,9 +1,37 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// import ProtectedRoute from "./pages/ProtectedRoute";
+// import { AuthProvider } from "./contexts/FakeAuthContext";
+
+import AppLayout from "./ui/AppLayout";
+
+import Error from "./ui/Error";
+import Home from "./pages/Home";
+import Login, { action as LoginAction } from "./pages/Login";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    action: LoginAction,
+    errorElement: <Error />,
+  },
+]);
+
 function App() {
-  return (
-    <div>
-      <h1 className="text-yellow-400">Hello!</h1>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
