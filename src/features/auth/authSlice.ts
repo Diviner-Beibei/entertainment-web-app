@@ -52,3 +52,5 @@ export default authSlice.reducer;
 
 export const getIsAuthenticated = (state: RootState) =>
   state.auth.isAuthenticated;
+
+export const getUserFace = (state: RootState) => state.auth.user.avatar;

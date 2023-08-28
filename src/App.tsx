@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import ProtectedRoute from "./pages/ProtectedRoute";
 // import { AuthProvider } from "./contexts/FakeAuthContext";
 
-import AppLayout from "./ui/AppLayout";
+import AppLayout, { loader as AppLoader } from "./ui/AppLayout";
 
 import Error from "./ui/Error";
 import Home from "./pages/Home";
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
-
+    loader: AppLoader,
     children: [
       {
         index: true,
