@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getIsAuthenticated } from "../features/auth/authSlice";
 import Navbar from "./Navbar";
 // import Loader from "./Loader";
-import { initData } from "../features/data/dataSlice";
+import { initData } from "../features/show/showSlice";
 import store from "../store";
 
 function AppLayout() {
