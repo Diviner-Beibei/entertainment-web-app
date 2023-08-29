@@ -51,6 +51,22 @@ export const getTrendingShow = createSelector([getShows], (shows) =>
   shows.filter((e) => e.isTrending)
 );
 
+export const getRecommendShow = createSelector([getShows], (shows) =>
+  shows.filter((e) => !e.isTrending)
+);
+
+export const getMovies = createSelector([getShows], (shows) =>
+  shows.filter((e) => e.category === "Movie")
+);
+
+export const getTvSeries = createSelector([getShows], (shows) =>
+  shows.filter((e) => e.category === "TV Series")
+);
+
+export const getBookmarkedShows = createSelector([getShows], (shows) =>
+  shows.filter((e) => e.isBookmarked)
+);
+
 export const getShowById = createSelector(
   [getShows, (_, id) => id],
   (shows, id) => shows.find((e: Show) => e.id === id)

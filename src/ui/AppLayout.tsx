@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 // import Loader from "./Loader";
 import { initData } from "../features/show/showSlice";
 import store from "../store";
+import Search from "./Search";
 
 function AppLayout() {
   const isAuth = useSelector(getIsAuthenticated);
@@ -23,9 +24,12 @@ function AppLayout() {
   // const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <main className="bg-dark-blue">
-      <header>
+    <main className="bg-dark-blue h-full">
+      <header className="">
         <Navbar />
+        <div className="pt-16">
+          <Search />
+        </div>
       </header>
       {/* {isLoading && <Loader />} */}
       <Outlet />

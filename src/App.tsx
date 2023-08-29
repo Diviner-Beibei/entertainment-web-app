@@ -7,6 +7,9 @@ import AppLayout, { loader as AppLoader } from "./ui/AppLayout";
 
 import Error from "./ui/Error";
 import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import TvSeries from "./pages/TvSeries";
+import Bookmarked from "./pages/Bookmarked";
 import Login, { action as LoginAction } from "./pages/Login";
 
 const router = createBrowserRouter([
@@ -19,6 +22,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "movies",
+        element: <Movies />,
+      },
+      {
+        path: "tv-series",
+        element: <TvSeries />,
+      },
+      {
+        path: "bookmarked",
+        element: <Bookmarked />,
       },
     ],
   },
