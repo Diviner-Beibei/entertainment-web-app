@@ -1,11 +1,19 @@
 import { useState } from "react";
+import store from "../store";
+import { updateSearch } from "../features/show/showSlice";
 
 function Search() {
   const [search, setSearch] = useState("");
-  function handleSearch(e: unknown) {
-    console.log(e);
-    setSearch("");
-    // setSearch(e.target.value);
+  function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    console.log(val);
+    setSearch(val);
+    if (/\w/.test(val)) {
+      store.dispatch(updateSearch(val));
+      return;
+    } else {
+      store.dispatch(updateSearch(""));
+    }
   }
 
   return (
@@ -20,7 +28,7 @@ function Search() {
         value={search}
         onChange={handleSearch}
         placeholder="Search for movies or TV series"
-        className="bg-transparent border-none focus:outline-none caret-red-500 text-base font-light min-w-[257px]"
+        className="bg-transparent text-pure-white border-none focus:outline-none caret-red-500 text-base font-light min-w-[257px]"
       />
     </div>
   );

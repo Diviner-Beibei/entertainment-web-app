@@ -6,7 +6,7 @@ function TvSeries() {
   const tvSeries = useSelector(getTvSeries);
   return (
     <div className="bg-dark-blue h-full">
-      <ShowList category="Movies" shows={tvSeries} isVerticle={true} />
+      <ShowList category="Tv Series" shows={tvSeries} isVerticle={true} />
     </div>
   );
 }

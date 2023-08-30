@@ -5,13 +5,16 @@ import { useSelector } from "react-redux";
 import { getIsAuthenticated } from "../features/auth/authSlice";
 import Navbar from "./Navbar";
 // import Loader from "./Loader";
-import { initData } from "../features/show/showSlice";
+import { getIsSearching, initData } from "../features/show/showSlice";
 import store from "../store";
 import Search from "./Search";
+import SearchResult from "../pages/SearchResult";
 
 function AppLayout() {
   const isAuth = useSelector(getIsAuthenticated);
-  console.log(isAuth);
+
+  const isSearching = useSelector(getIsSearching);
+  // console.log(isAuth);
 
   const navigate = useNavigate();
 
@@ -31,8 +34,11 @@ function AppLayout() {
           <Search />
         </div>
       </header>
+      <main>
+        {isSearching && <SearchResult />}
+        {!isSearching && <Outlet />}
+      </main>
       {/* {isLoading && <Loader />} */}
-      <Outlet />
     </main>
   );
 }

@@ -5,7 +5,7 @@ import showSlice from "./features/show/showSlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    shows: showSlice,
+    show: showSlice,
   },
 });
 

@@ -24,9 +24,11 @@ export interface Show {
 
 interface State {
   shows: Show[];
+  serch: string;
+  isSearching: boolean;
 }
 
-const initialState: State = { shows: [] };
+const initialState: State = { shows: [], serch: "", isSearching: false };
 
 const dataSlice = createSlice({
   name: "show",
@@ -40,10 +42,15 @@ const dataSlice = createSlice({
         if (show.id === action.payload) show.isBookmarked = !show.isBookmarked;
       });
     },
+    updateSearch(state, action) {
+      state.serch = action.payload;
+      if (action.payload) state.isSearching = true;
+      else state.isSearching = false;
+    },
   },
 });
 
-export const { initData, updateBookmark } = dataSlice.actions;
+export const { initData, updateBookmark, updateSearch } = dataSlice.actions;
 
 export default dataSlice.reducer;
 
@@ -51,7 +58,7 @@ export default dataSlice.reducer;
 //   state.shows.shows.filter((e) => e.isTrending);
 
 //Get interface
-export const getShows = (state: RootState) => state.shows.shows;
+export const getShows = (state: RootState) => state.show.shows;
 
 export const getTrendingShow = createSelector([getShows], (shows) =>
   shows.filter((e) => e.isTrending)
@@ -77,3 +84,14 @@ export const getShowById = createSelector(
   [getShows, (_, id) => id],
   (shows, id) => shows.find((e: Show) => e.id === id)
 );
+
+export const getShowsBySearch = createSelector(
+  [getShows, (state: RootState) => state.show.serch],
+  (shows, search) =>
+    shows.filter((show) =>
+      show.title.toLowerCase().includes(search.toLowerCase())
+    )
+);
+
+export const getSearchString = (state: RootState) => state.show.serch;
+export const getIsSearching = (state: RootState) => state.show.isSearching;
