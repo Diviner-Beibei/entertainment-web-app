@@ -35,16 +35,22 @@ const dataSlice = createSlice({
     initData(state, action) {
       state.shows = action.payload;
     },
+    updateBookmark(state, action) {
+      state.shows.filter((show) => {
+        if (show.id === action.payload) show.isBookmarked = !show.isBookmarked;
+      });
+    },
   },
 });
 
-export const { initData } = dataSlice.actions;
+export const { initData, updateBookmark } = dataSlice.actions;
 
 export default dataSlice.reducer;
 
 // export const getTrendingShow = (state: RootState) =>
 //   state.shows.shows.filter((e) => e.isTrending);
 
+//Get interface
 export const getShows = (state: RootState) => state.shows.shows;
 
 export const getTrendingShow = createSelector([getShows], (shows) =>

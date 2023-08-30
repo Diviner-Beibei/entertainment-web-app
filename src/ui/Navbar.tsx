@@ -6,6 +6,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   function handleClick(e: React.MouseEvent<HTMLUListElement, MouseEvent>) {
+    e.preventDefault();
     const node = (e.target as Element).closest(".category");
 
     console.log(node);

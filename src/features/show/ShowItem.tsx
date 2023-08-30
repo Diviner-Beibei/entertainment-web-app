@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { Show, getShowById } from "./showSlice";
+import { Show, getShowById, updateBookmark } from "./showSlice";
+import store from "../../store";
 
 interface ShowItemProps {
   id: number;
@@ -24,10 +25,25 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
       "absolute left-0 bottom-[-45px] flex justify-between w-full items-center";
   }
 
+  function handleBookmark(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    e.preventDefault();
+    const node = (e.target as Element).closest(".bookmark");
+    if (node) {
+      store.dispatch(updateBookmark(id));
+    }
+  }
+
   return (
     <div style={{ backgroundImage: `url(${bgImg})` }} className={bgStyle}>
-      <div className="bg-dark-blue h-8 w-8 rounded-full flex items-center justify-center opacity-50 absolute right-2 top-2">
-        <img src="./icon-bookmark-empty.svg" alt="picture" />
+      <div
+        className="bg-dark-blue h-8 w-8 rounded-full flex items-center justify-center opacity-50 absolute right-2 top-2 bookmark"
+        onClick={handleBookmark}
+      >
+        {show?.isBookmarked ? (
+          <img src="./icon-bookmark-full.svg" alt="picture" />
+        ) : (
+          <img src="./icon-bookmark-empty.svg" alt="picture" />
+        )}
       </div>
 
       <div className={showInfoStyle}>
@@ -37,7 +53,12 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
               {show?.year}
             </span>
             <span className="bg-pure-white w-[3px] h-[3px] opacity-50"></span>
-            <img src="./icon-category-movie.svg" alt="category mark" />
+            {show?.category === "Movie" ? (
+              <img src="./icon-category-movie.svg" alt="category mark" />
+            ) : (
+              <img src="./icon-category-tv.svg" alt="category mark" />
+            )}
+
             <span className="text-pure-white opacity-75 text-[12px] font-light">
               {show?.category}
             </span>
