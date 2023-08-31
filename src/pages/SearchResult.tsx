@@ -6,9 +6,9 @@ function SearchResult() {
   const results = useSelector(getShowsBySearch);
   const inputString = useSelector(getSearchString);
   const category = `Found ${results.length} results for ${inputString}`;
-
+  //min-h-[600px]
   return (
-    <div className="bg-dark-blue min-h-[600px]">
+    <div className="bg-dark-blue h-screen">
       <ShowList category={category} shows={results} isVerticle={true} />
     </div>
   );

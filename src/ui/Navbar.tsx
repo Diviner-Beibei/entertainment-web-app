@@ -34,7 +34,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="bg-semi-dark-blue h-[56px] fixed flex items-center px-5 justify-between w-full z-10">
+    <nav className="bg-semi-dark-blue h-[56px] fixed flex items-center px-5 justify-between w-full md:w-[719px] md:h-[72px] z-10">
       <Logo />
       <ul className="flex gap-5" onClick={handleClick}>
         <li className="home category">

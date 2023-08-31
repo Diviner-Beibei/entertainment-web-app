@@ -28,9 +28,12 @@ function AppLayout() {
 
   return (
     <main className="bg-dark-blue h-full">
-      <header className="">
-        <Navbar />
-        <div className="pt-16">
+      <header className="mb-5 md:pt-5">
+        <div className="w-full md:mx-auto md:flex md:justify-center">
+          <Navbar />
+        </div>
+
+        <div className="pt-16 md:pt-24">
           <Search />
         </div>
       </header>

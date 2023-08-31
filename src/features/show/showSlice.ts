@@ -76,8 +76,12 @@ export const getTvSeries = createSelector([getShows], (shows) =>
   shows.filter((e) => e.category === "TV Series")
 );
 
-export const getBookmarkedShows = createSelector([getShows], (shows) =>
-  shows.filter((e) => e.isBookmarked)
+export const getBookmarkedShowsByMovie = createSelector([getShows], (shows) =>
+  shows.filter((e) => e.isBookmarked && e.category === "Movie")
+);
+
+export const getBookmarkedShowsByTv = createSelector([getShows], (shows) =>
+  shows.filter((e) => e.isBookmarked && e.category === "TV Series")
 );
 
 export const getShowById = createSelector(
