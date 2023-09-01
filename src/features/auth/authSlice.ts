@@ -16,6 +16,8 @@ interface State {
     avatar: string;
   };
   isAuthenticated: boolean;
+  errorNumber: number;
+  // isLogin: boolean;
 }
 
 const initialState: State = {
@@ -26,6 +28,8 @@ const initialState: State = {
     avatar: "https://i.pravatar.cc/100?u=zz",
   },
   isAuthenticated: false,
+  errorNumber: 0,
+  // isLogin: true,
 };
 
 const authSlice = createSlice({
@@ -37,16 +41,23 @@ const authSlice = createSlice({
       state.user.email = action.payload.email;
       state.user.password = action.payload.password;
       state.isAuthenticated = true;
+      state.errorNumber = 0;
     },
     logout(state) {
       state.user.email = "";
       state.user.password = "";
       state.isAuthenticated = false;
     },
+    setErrorNumber(state, action) {
+      state.errorNumber = action.payload;
+    },
+    // setIsLogin(state, action) {
+    //   state.isLogin = action.payload;
+    // },
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, setErrorNumber } = authSlice.actions;
 
 export default authSlice.reducer;
 
@@ -54,3 +65,5 @@ export const getIsAuthenticated = (state: RootState) =>
   state.auth.isAuthenticated;
 
 export const getUserFace = (state: RootState) => state.auth.user.avatar;
+export const getErrorNumber = (state: RootState) => state.auth.errorNumber;
+// export const getIsLogin = (state: RootState) => state.auth.isLogin;
