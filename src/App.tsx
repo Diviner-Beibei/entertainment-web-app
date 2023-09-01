@@ -12,38 +12,43 @@ import TvSeries from "./pages/TvSeries";
 import Bookmarked from "./pages/Bookmarked";
 import Login, { action as LoginAction } from "./pages/Login";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      errorElement: <Error />,
+      loader: AppLoader,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "movies",
+          element: <Movies />,
+        },
+        {
+          path: "tv-series",
+          element: <TvSeries />,
+        },
+        {
+          path: "bookmarked",
+          element: <Bookmarked />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+      action: LoginAction,
+      errorElement: <Error />,
+    },
+  ],
   {
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <Error />,
-    loader: AppLoader,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "movies",
-        element: <Movies />,
-      },
-      {
-        path: "tv-series",
-        element: <TvSeries />,
-      },
-      {
-        path: "bookmarked",
-        element: <Bookmarked />,
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-    action: LoginAction,
-    errorElement: <Error />,
-  },
-]);
+    basename: "/entertainment-web-app/",
+  }
+);
 
 function App() {
   return <RouterProvider router={router} />;
