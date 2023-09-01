@@ -10,7 +10,7 @@ function Bookmarked() {
   const bookmarkedTvSeries = useSelector(getBookmarkedShowsByTv);
 
   return (
-    <div className="bg-dark-blue h-screen flex flex-col gap-8">
+    <div className="bg-dark-blue h-full flex flex-col gap-8">
       <ShowList
         category="Bookmarked Movies"
         shows={bookmarkedMovies}

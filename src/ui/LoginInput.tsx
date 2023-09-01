@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { getErrorNumber } from "../features/auth/authSlice";
+import store from "../store";
+import { getErrorNumber, setErrorNumber } from "../features/auth/authSlice";
 
 interface LoginInputProps {
   htmlFor: string;
@@ -55,6 +56,15 @@ function LoginInput({
       break;
   }
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (showError) {
+      console.log("showError");
+
+      store.dispatch(setErrorNumber(0));
+    }
+    setOnChange(e.target.value);
+  }
+
   return (
     <div className="flex relative items-center">
       <label htmlFor={htmlFor}></label>
@@ -62,9 +72,11 @@ function LoginInput({
         type={type}
         id={id}
         value={value}
-        onChange={(e) => setOnChange(e.target.value)}
+        onChange={handleChange}
         placeholder={placeholderText}
-        className="bg-semi-dark-blue caret-red-600 border-b w-full text-[15px] font-light border-greyish-blue focus:border-pure-white placeholder:text-greyish-blue py-3 focus:outline-none focus:ring-0 focus:caret-red text-pure-white"
+        className={`bg-semi-dark-blue caret-red-600 border-b w-full text-[15px] font-light ${
+          showError ? "border-red-600" : "border-greyish-blue"
+        } focus:border-pure-white placeholder:text-greyish-blue py-3 focus:outline-none focus:ring-0 focus:caret-red text-pure-white`}
       />
       <span
         className={`text-red-700 absolute text-[13px] right-0 ${

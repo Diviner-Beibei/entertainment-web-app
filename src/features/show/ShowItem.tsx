@@ -12,7 +12,7 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
 
   const md = window.matchMedia("(min-width: 768px)");
   const lg = window.matchMedia("(min-width: 1024px)");
-  console.log(md, lg);
+  // console.log(md, lg);
 
   let bgImg;
   let bgStyle;
@@ -35,9 +35,9 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
       bgImg = show?.thumbnail.regular.large;
     }
 
-    bgStyle = `group w-[164px] h-[110px] md:w-[220px] md:h-[140px] rounded-lg relative flex items-center justify-center`;
+    bgStyle = `group w-[164px] h-[110px] md:w-[220px] md:h-[140px] lg:w-[280px] lg:h-[174px] rounded-lg relative flex items-center justify-center`;
     showInfoStyle =
-      "absolute left-0 bottom-[-45px] flex justify-between w-full items-center";
+      "absolute left-0 bottom-[-45px]  flex justify-between w-full items-center";
   }
 
   function handleBookmark(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -93,7 +93,7 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
           <div className="flex items-center gap-2">
             <span
               className={`text-pure-white opacity-75 ${
-                isTrending ? "text-xs text-[15px]" : "text-xs text-[13px]"
+                isTrending ? "text-xs md:text-[15px]" : "text-xs md:text-[13px]"
               } font-light`}
             >
               {show?.year}
@@ -107,7 +107,7 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
 
             <span
               className={`text-pure-white opacity-75 ${
-                isTrending ? "text-xs text-[15px]" : "text-xs text-[13px]"
+                isTrending ? "text-xs md:text-[15px]" : "text-xs md:text-[13px]"
               } font-light`}
             >
               {show?.category}

@@ -6,7 +6,7 @@ function Movies() {
   const movies = useSelector(getMovies);
 
   return (
-    <div className="bg-dark-blue h-screen">
+    <div className="bg-dark-blue h-full">
       <ShowList category="Movies" shows={movies} isVerticle={true} />
     </div>
   );

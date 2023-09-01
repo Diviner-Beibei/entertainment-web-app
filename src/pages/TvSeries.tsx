@@ -5,7 +5,7 @@ import { getTvSeries } from "../features/show/showSlice";
 function TvSeries() {
   const tvSeries = useSelector(getTvSeries);
   return (
-    <div className="bg-dark-blue h-screen">
+    <div className="bg-dark-blue h-full">
       <ShowList category="Tv Series" shows={tvSeries} isVerticle={true} />
     </div>
   );

@@ -33,11 +33,11 @@ function AppLayout() {
           <Navbar />
         </div>
 
-        <div className="pt-16 md:pt-24">
+        <div className="pt-16 md:pt-24 lg:ml-28 lg:pt-5">
           <Search />
         </div>
       </header>
-      <main>
+      <main className="lg:ml-28">
         {isSearching && <SearchResult />}
         {!isSearching && <Outlet />}
       </main>
