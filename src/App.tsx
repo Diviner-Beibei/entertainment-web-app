@@ -12,6 +12,10 @@ import TvSeries from "./pages/TvSeries";
 import Bookmarked from "./pages/Bookmarked";
 import Login, { action as LoginAction } from "./pages/Login";
 
+let basenameUrl = "/";
+if (import.meta.env.PROD) basenameUrl = "/entertainment-web-app/";
+console.log(import.meta.env, basenameUrl);
+
 const router = createBrowserRouter(
   [
     {
@@ -46,7 +50,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/entertainment-web-app/",
+    basename: basenameUrl,
   }
 );
 

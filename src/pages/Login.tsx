@@ -13,8 +13,8 @@ import Logo from "../ui/Logo";
 import LoginInput from "../ui/LoginInput";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("123456@gmail.com");
+  const [password, setPassword] = useState("123456");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
 
