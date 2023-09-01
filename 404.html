@@ -6,9 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found</title>
 </head>
-    <h1>Hello World~!!!</h1>
-<body>
 
+<body>
+    <h1>Automatically jump to the homepage after 5 seconds</h1>
+    <h2>React router is used in this project, and it is deployed on Github Pages static hosting server. Refreshing the
+        browser will cause this problem, this is not a bug! ! !</h2>
+    <script>
+        let countTime = 5;
+
+        function count() {
+
+            document.getElementById('timeout').textContent = countTime;
+            countTime -= 1;
+            if (countTime <= 0) {
+                location.href = 'https://diviner-beibei.github.io/entertainment-web-app/home';
+            }
+            setTimeout(() => {
+                count();
+            }, 1000);
+        }
+
+        count();
+    </script>
 </body>
 
 </html>
