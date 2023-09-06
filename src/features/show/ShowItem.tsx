@@ -34,8 +34,8 @@ function ShowItem({ id, isTrending }: ShowItemProps) {
     if (lg.matches) {
       bgImg = show?.thumbnail.regular.large;
     }
-
-    bgStyle = `group w-[164px] h-[110px] md:w-[220px] md:h-[140px] lg:w-[280px] lg:h-[174px] rounded-lg relative flex items-center justify-center`;
+    //w-[164px] h-[110px] md:w-[220px] md:h-[140px] lg:w-[280px] lg:h-[174px]
+    bgStyle = `group h-[110px] md:h-[140px] lg:h-[174px] bg-cover rounded-lg relative flex items-center justify-center`;
     showInfoStyle =
       "absolute left-0 bottom-[-45px]  flex justify-between w-full items-center";
   }

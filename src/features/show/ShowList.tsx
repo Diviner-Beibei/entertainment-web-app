@@ -8,9 +8,9 @@ interface ShowListProps {
 }
 
 function ShowList({ category, shows, isVerticle }: ShowListProps) {
-  // console.log("1111111111", trendingShows);
+  // console.log("1111111111", trendingShows);  flex flex-wrap
   return (
-    <div className="ml-5">
+    <div className={isVerticle ? "mx-5" : "ml-5"}>
       <h2 className="text-pure-white mb-4 md:mb-6 tracking-[0.31px] font-light text-xl md:text-[32px] md:tracking-[-0.5px]">
         {category}
       </h2>
@@ -24,7 +24,7 @@ function ShowList({ category, shows, isVerticle }: ShowListProps) {
         </ul>
       )}
       {isVerticle && (
-        <ul className="flex flex-wrap w-full overflow-hidden gap-4 md:gap-7 overflow-y-auto">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full overflow-hidden gap-4 md:gap-7 overflow-y-auto">
           {shows.map((show) => (
             <li
               className="h-[150px] md:h-[192px] lg:h-[226px]"

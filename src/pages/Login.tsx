@@ -36,7 +36,7 @@ function Login() {
   };
   //min-h-[365px]
   return (
-    <div className="bg-dark-blue grid place-items-center h-screen">
+    <main className="bg-dark-blue grid place-items-center h-screen">
       <div className="flex flex-col gap-12 items-center">
         <Logo />
 
@@ -95,7 +95,7 @@ function Login() {
           </div>
         </Form>
       </div>
-    </div>
+    </main>
   );
 }
 

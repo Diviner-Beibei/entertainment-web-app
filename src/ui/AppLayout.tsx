@@ -27,7 +27,7 @@ function AppLayout() {
   // const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <main className="bg-dark-blue h-full">
+    <div className="bg-dark-blue h-full">
       <header className="mb-5 md:pt-5">
         <div className="w-full md:mx-auto md:flex md:justify-center">
           <Navbar />
@@ -42,7 +42,7 @@ function AppLayout() {
         {!isSearching && <Outlet />}
       </main>
       {/* {isLoading && <Loader />} */}
-    </main>
+    </div>
   );
 }
 
